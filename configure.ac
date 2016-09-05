@@ -1,5 +1,5 @@
 AC_INIT([dovecot-boxstats], [0.1], [rixed-github@happyleptic.org])
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_SRCDIR([src/main.c])
 AM_INIT_AUTOMAKE([foreign])
 
@@ -13,9 +13,14 @@ AC_ARG_WITH(
    CPPFLAGS="${CPPFLAGS} -I${withval}/include"])
 
 AC_CHECK_LIB(
-  [dovecot-storage],
-  [maildir_list_iter_init],,
-  AC_MSG_ERROR([missing dovecot-storage library]))
+  [dovecot],
+  [fs_deinit],,
+  AC_MSG_ERROR([missing dovecot library]))
+
+#AC_CHECK_LIB(
+#  [dovecot-storage],
+#  [maildir_list_iter_init],,
+#  AC_MSG_ERROR([missing dovecot-storage library]))
 
 AC_CHECK_HEADER(
   [dovecot/lib.h],,

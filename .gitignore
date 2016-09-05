@@ -17,3 +17,5 @@ install-sh
 missing
 .deps
 src/boxstats
+.gdb_history
+config.h.in~
